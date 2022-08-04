@@ -1,1 +1,37 @@
-<p>Hello World!!!</p>
+<!-- Structural directives: ngIf -->
+<!-- <ng-template [ngIf]="blueClass">
+    <p>Button is blue.</p>
+</ng-template> -->
+
+<p *ngIf="blueClass">Button is blue.</p>
+<!-- Structural directives: ngIf -->
+
+  <!-- Attribute directives: ngClass, ngStyle -->
+ <button (click)="blueClass = !blueClass" 
+ [ngClass]="{ blue: blueClass }" 
+ [ngStyle]="{ 'font-size.px': fontSize }">Change</button>
+
+ <hr>
+ 
+ <!-- Event binding, Property binding -->
+<input (keyup)="changeImage($event)" [value]="imgURL">
+
+<!-- Custom property, Property binding on components -->
+<!-- <app-post [img]="imgURL" (imgSelected)="logImg($event)">
+    !-- content projection --
+    <p>SIUUUUUUU</p>
+</app-post> -->
+
+<!-- Structural directives: ngFor -->
+<app-post *ngFor="let image of images; let i = index" [img]="image" (imgSelected)="logImg($event)">
+    <p>SIUUUUUUU {{ i }}</p>
+</app-post>
+
+<p>Hello {{ name | titlecase }}!!!</p>
+<p>Hello {{ getName() }} !!!!</p>
+<p>{{ 12 + 321 }}</p> 
+<!-- Pipes-->
+<p> {{ currentDate | date: 'short' }}</p>
+<p> {{ cost | currency: 'MXN' }}</p>
+<p> {{ temperature | number: '1.2-5' }}</p>
+<pre> {{ pizza | json }}</pre>
